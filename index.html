@@ -8,22 +8,30 @@
     <option value="computer">computer</option>
 </select>
 <input id="questions" type="text" />
-<button onclick="calculateOutput"></button>
+<button onclick="calculateOutput">Calculate</button>
 
 <div id="output">
 </div>
 <script>
 
 function calculateOutput() {
+    console.log("working")
     var e = document.getElementById("section");
     var section = e.options[e.selectedIndex].value;
     var questionString = document.getElementById("questions");
     var inputQuestions = questionString.split(' ');
+    
+    console.log(section);
+    console.log(questionString);
+    console.log(inputQuestions);
+
 
     var result = "";
     for(var i = 0; i < inputQuestions.length; i++) {
         result += inputQuestions[i] + ", "
     }
+
+    console.log(result);
 
     document.getElementById("output").textContent = result;
 }
