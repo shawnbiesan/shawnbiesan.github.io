@@ -1,3 +1,159 @@
 <html>
-hello
+<select id="section">
+    <option value="materials">materials</option>
+    <option value="setup">setup</option>
+    <option value="eating">eating</option>
+    <option value="hygiene">hygiene</option>
+    <option value="clothing">clothing</option>
+    <option value="computer">computer</option>
+</select>
+<input id="questions" type="text" />
+<button onclick="calculateOutput"></button>
+
+<div id="output">
+</div>
+<script>
+
+function calculateOutput() {
+    var e = document.getElementById("section");
+    var section = e.options[e.selectedIndex].value;
+    var questionString = document.getElementById("questions");
+    var inputQuestions = questionString.split(' ');
+
+    var result = "";
+    for(var i = 0; i < inputQuestions.length; i++) {
+        result += inputQuestions[i] + ", "
+    }
+
+    document.getElementById("output").textContent = result;
+}
+
+var questions = {
+    'materials': {
+        1: "opening and closing a book",
+        2: "manipulating toys of average size (e.g., trucks, dolls)",
+        3: "turning pages in large book singly",
+        4: "painting with a brush",
+        5: "using writing utensils (e.g., pencils, pens, markers, crayons) to draw/write on paper",
+        6: "turning pages in small book singly",
+        7: "manipulating small game pieces or toys", 
+        8:  "taking off and replacing caps on pens and markers",
+        9: "spreading paste or glue on paper and placing another paper on top to stick",
+        10: "separating a single sheet of paper for use",
+        11: "molding and shaping clay",
+        12: "inserting paper into folder pocket", 
+        13: "folding paper with a definite crease", 
+        14: "cutting with scissors along a line",
+        15: "using a stapler to fasten two or more sheets of paper", 
+        16: "constructing using several media (e.g., paper, wood, fabric, leather, cord, yarn)",
+        17: "cutting off and applying tape",
+        18: "performing card game tasks",
+        19: "erasing pencil marks without tearing the paper", 
+        20: "cutting out shapes",
+        21: "sharpening a pencil with a pencil sharpener",
+        22: "using all art materials comparably to peers",
+        23: "assembling several sheets of paper together (e.g., to stack or collate)", 
+        24: "folding and constructing out of paper and cardboard",
+        25: "securing paper with paper clip",
+
+    },
+    'setup': {
+        1: "picking up and holding small objects with hand",
+        2: "putting objects/materials into large containers (e.g., desk, bookshelves, cubbies)", 
+        3: "disposing of trash in trash receptacles",
+        4: "opening bags without fasteners (e.g., paper bag)",
+        5: "removing materials/food from large containers (e.g., boxes, bookshelves, bins)",
+        6: "putting objects/materials into small containers (e.g., jars)",
+        7: "using a sponge or a cloth to wipe dirt/spills from flat surfaces (e.g., desk/table)", 
+        8: "removing materials or food from small containers (e.g., jars, cartons)",
+        9: "taking out and putting away book in desk",
+        10: "stacking materials (e.g., on desk or cafeteria tray)",
+        11: "obtaining personal items from own bag or pocket and giving to another (eg, homework, money for lunch)", 
+        12: "collecting objects/materials (eg, from others to clean up)", 
+        13: "removing pull-off lids from containers", 
+        14: "passing out objects or materials",
+        15: "opening cartons (e.g., milk carton)",
+        16: "opening sealed bags (e.g., potato chips)",
+    },
+    'eating': {
+        1:  "eating regular lunchtime/snacktime foods without choking",
+        2:  "drinking from a cup or glass",
+        3:  "picking up and putting down utensils", 
+        4:  "carrying finger foods to mouth and biting off small pieces",
+        5:  "bringing food from plate/container to mouth using fork or spoon",
+        6:  "drinking without spilling from at least one type of container (e.g., cup, glass, carton, etc.)",
+        7:  "scooping food or liquids with spoon",
+        8:  "eating and drinking without dribbling or drooling",  
+        9:  "eating within an allotted time",
+        10:  "scooping food with fork",
+        11:  "using napkin to wipe face",  
+        12:  "spearing food with fork",
+        13:  "using napkin to wipe hands", 
+        14:  "drinking from student-accessible water fountain",
+
+    },
+    'hygiene': {
+        1:  "drying hands (using any method)",
+        2:  "washing hands",
+        3:  "turning water faucet on/off",
+        4:  "obtaining paper towel from dispenser or towel from rack",
+        5:  "pushing handle to flush toilet",
+        6:  "obtaining soap from any type of dispenser, or holds and applies bar soap",
+        7:  "wiping nose",
+        8:  "caring for toileting needs in timely fashion to avoid wetting (e.g., goes to bathroom or changes diaper on time)",
+        9:  "caring for toileting needs in timely fashion to avoid soiling (e.g., goes to bathroom or changes diaper on time)",
+        10:  "obtaining toilet paper from roll or dispenser", 
+        11:  "blowing nose", 
+        12:  "raising or lowering toilet lid or seat if needed",
+        13:  "closing and securing bathroom stall or door",
+        14:  "wiping or cleaning self after toileting (consider any cleaning except washing hands)", 
+        15:  "covering mouth/nose with hand or tissue when coughing or sneezing",
+
+    },
+    'clothing': {
+         1:  "removing a hat",
+         2:  "removing front-opening garment top (e.g., sweater, coat)",  
+         3:  "putting on a hat",  
+         4:  "putting on front-opening garment top (e.g., sweater, coat)",
+         5:  "lowering garment bottoms from waist to knees and pulling up from knees to waist (e.g., for toileting)", 
+         6:  "zipping and unzipping, not including separating and hooking zipper",
+         7:  "removing pullover garment top (e.g., sweatshirt, sweater)",
+         8:  "removing shoes/boots",
+         9:  "hanging clothing on hook or hanger",  
+         10:  "putting on a pullover garment top (e.g., sweater)",  
+         11:  "putting on and removing socks",
+         12:  "putting shoes boots on (do not consider tying or closures)", 
+         13:  "securing shoes by tying or using velcro",
+         14:  "separating and hooking zippers",
+         15:  "buttoning a row of buttons with one-to-one correspondence",  
+         16:  "fastening a belt buckle",
+         17:  "buttoning small buttons (less than one inch)",
+
+    },
+    'writing': {
+        1: "working from left to right",
+        2: "identifying appropriate starting and stopping point on paper or worksheet",
+        3: "writing on lines on paper or within designated space on worksheet",
+        4: "writing numbers and letters of appropriate size",
+        5: "producing words and numbers of acceptable quality", 
+        6: "keeping place on worksheet with multiple items; does not omit items", 
+        7: "copying material accurately legibly from a nearby source (e.g., from textbook)", 
+        8: "leaving appropriate spaces between words",
+        9: "aligning numbers and words as required (e.g., number problems, lists)",
+        10: "organizing written items on a page (e.g., spaces math problems on paper; moves to next line when appropriate)", 
+        11: "copying material accurately/legibly from a distance (e.g., from blackboard)",
+        12: "producing written work at necessary speed to keep up with peers",
+    },
+    'computer': {
+        1:  "operating equipment using a simple switch (e.g., computer/tape recorder) ",
+        2:  "working for 1/2 hour at computer without fatigue",
+        3:  "locating and hitting one to two keys in sequence to carry out computer functions",  
+        4:  "locating and hitting three or more keys in sequence to carry out computer functions",  
+        5:  "using a mouse to carry out computer functions",
+        6:  "inserting and removing diskettes from computer or tape from tape recorder",  
+        7:  "producing a complete sentence on computer in acceptable time",
+        8:  "producing classroom work using computer at speed to keep pace with peers",
+    },
+}
+</script>
 </html>
