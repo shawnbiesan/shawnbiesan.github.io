@@ -18,7 +18,7 @@ function calculateOutput() {
     console.log("working")
     var e = document.getElementById("section");
     var section = e.options[e.selectedIndex].value;
-    var questionString = document.getElementById("questions");
+    var questionString = document.getElementById("questions").value;
     var inputQuestions = questionString.split(' ');
     
     console.log(section);
