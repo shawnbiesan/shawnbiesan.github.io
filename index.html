@@ -28,7 +28,7 @@ function calculateOutput() {
 
     var result = "";
     for(var i = 0; i < inputQuestions.length; i++) {
-        result += inputQuestions[i] + ", "
+        result += questions[section][inputQuestions[i]] + ", "
     }
 
     console.log(result);
